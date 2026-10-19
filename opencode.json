@@ -1,0 +1,96 @@
+{
+    "$schema": "https://opencode.ai/config.json",
+    "permission": {
+        "*": "allow"
+    },
+    "provider": {
+        "llama_cpp": {
+            "npm": "@ai-sdk/openai-compatible",
+            "name": "llama cpp",
+            "options": {
+                "baseURL": "http://192.168.18.4:1234/v1",
+				"apiKey": "dummy"
+            },
+            "models": {
+                "qwen3.8": {
+                    "name": "qwen3.8",
+                    "modalities": {
+                        "input": [
+                            "text",
+                            "image"
+                        ],
+                        "output": [
+                            "text"
+                        ]
+                    },
+                    "limit": {
+                        "context": 262144,
+                        "output": 16000
+                    },
+                    "options": {
+                        "reasoningEffort": "low"
+                    },
+                    "cost": {
+                        "input": 0.40,
+                        "output": 3.0
+                    }
+                }
+            }
+        },
+		"ollama": {
+            "npm": "@ai-sdk/openai-compatible",
+            "name": "llama cpp",
+            "options": {
+                "baseURL": "https://suggest-generally-maintaining-lightbox.trycloudflare.com/v1",
+				"apiKey": "418abbf855b7ba53955212caf5175ee62d908aead6330198"
+            },
+            "models": {
+                "qwen3.8-uncensored-mtp:latest": {
+                    "name": "qwen3.8-uncensored-mtp:latest",
+                    "modalities": {
+                        "input": [
+                            "text",
+                            "image"
+                        ],
+                        "output": [
+                            "text"
+                        ]
+                    },
+                    "limit": {
+                        "context": 131072,
+                        "output": 16000
+                    },
+                    "options": {
+                        "reasoningEffort": "low"
+                    },
+                    "cost": {
+                        "input": 0.40,
+                        "output": 3.0
+                    }
+                }
+            }
+        }
+    },
+    "plugin": [
+        "superpowers@git+https://github.com/obra/superpowers.git"
+    ],
+    "mcp": {
+        "chrome-devtools": {
+            "type": "local",
+            "command": [
+                "npx",
+                "-y",
+                "chrome-devtools-mcp"
+            ],
+            "enabled": false
+        },
+        "notion": {
+            "type": "local",
+            "command": ["npx", "-y", "@notionhq/notion-mcp-server"],
+            "enabled": false,
+            "environment": {
+                "NOTION_TOKEN": ""
+            }
+        }
+    }
+}
